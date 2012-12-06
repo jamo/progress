@@ -2,7 +2,7 @@
 
 class Status < ActiveRecord::Base
   # Use DRb as our transport
-  extend Tusk::Observable::DRb
+#  extend Tusk::Observable::DRb
 
   # After users are created, notify the message bus
  # after_create :notify_observers

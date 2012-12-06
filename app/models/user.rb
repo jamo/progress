@@ -1,10 +1,11 @@
-require 'tusk/observable/drb'
+#require 'tusk/observable/drb'
 
 class User < ActiveRecord::Base
   # Use DRb as our transport
-  extend Tusk::Observable::DRb
+#  extend Tusk::Observable::DRb
 
   # After users are created, notify the message bus
+=begin
   after_create :notify_observers
   after_update :notify_observers
   #after_save :notify_observers
@@ -20,4 +21,5 @@ class User < ActiveRecord::Base
     self.class.changed
     self.class.notify_observers self.class.channel
   end
+=end
 end
