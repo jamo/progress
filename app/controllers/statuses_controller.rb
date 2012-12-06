@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1.json
   def show
     @status = Status.find(params[:id])
-    @pros = @status.tehty / @status.yhteensa.to_f * 100
+    @pros = (@status.tehty / @status.yhteensa.to_f * 100).to_s[0..4]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,8 +57,6 @@ class StatusesController < ApplicationController
   # PATCH/PUT /statuses/1
   # PATCH/PUT /statuses/1.json
   def update
-    puts "###############################"
-    puts params
     @status = Status.find(params[:id])
 
     respond_to do |format|
@@ -82,6 +80,21 @@ class StatusesController < ApplicationController
       format.html { redirect_to statuses_url }
       format.json { head :no_content }
     end
+  end
+
+  def add_one_to_tehty
+    @status = Status.find(params[:id])
+    @status.tehty +=1
+    @status.save
+    redirect_to status_path(@status)
+  end
+
+  def remove_one_from_tehty
+    @status = Status.find(params[:id])
+    @status.tehty -=1
+    @status.tehty = 0 if @status.tehty < 0
+    @status.save
+    redirect_to status_path(@status)
   end
 
   private
