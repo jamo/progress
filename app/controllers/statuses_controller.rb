@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1.json
   def show
     @status = Status.find(params[:id])
-    @pros = (@status.tehty / @status.yhteensa.to_f * 100).to_s[0..4]
+    @pros = (@status.tehty / @status.yhteensa.to_f * 100).ceil
 
     respond_to do |format|
       format.html # show.html.erb
