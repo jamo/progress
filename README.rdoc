@@ -1,0 +1,6 @@
+== Demo of automatic reload with ActionController::Live
+
+BrowserController is the control channel for the browser.  When the page is
+loaded, application.js registers an SSE with the browser to watch /control.
+/control watches the filesystem for changes.  Whenever a change happens on the
+filesystem, an SSE is sent to the browser, telling it to reload.
