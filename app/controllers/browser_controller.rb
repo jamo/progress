@@ -1,3 +1,4 @@
+=begin 
 require 'tusk/observable/drb'
 
 # Start the DRb server for notifications
@@ -99,3 +100,4 @@ class BrowserController < ApplicationController
     end
   end
 end
+=end
